@@ -4,7 +4,7 @@ import sys
 import time
 
 from neopixel import *
-from constants import alphabet, letterSpace, space
+from constants import alphabet, letter_space, space
 
 WAIT_MS = 75
 NUMROWS = 8
@@ -33,7 +33,7 @@ def messageScroll(seconds, strip):
 
 
 def write_board(matrix):
-    time.sleep(1)
+    time.sleep(.050)
     for column, row in enumerate(matrix):
         #flip the column on odd rows to account for how the board is wired
         if column % 2 == 1:
@@ -48,7 +48,7 @@ def rot_ninety(matrx):
     new_matrx = []
     for column_no in range(len(matrx[0])):
         this_arr = []
-        for row in matrix:
+        for row in matrx:
             this_arr.append(row[column_no])
         new_matrx.append(this_arr)
     return new_matrx
@@ -61,13 +61,31 @@ if __name__ == '__main__':
     strip.begin()
     matrix = [[0 for row in range(NUMROWS)] for col in range(NUMCOLS)]
     #line = [1 for row in range(NUMROWS)]
-    line = [1,1,1,1,0,0,0,0]
     empty = [0 for row in range(NUMROWS)]
+    linetwo = empty
     matrix.pop()
-    matrix = [line] + matrix
+    matrix = [linetwo] + matrix
+    msg = "thats pretty cool chris!"
+    msg_matrix = []
+    for letter in msg:
+        for row in rot_ninety(alphabet[letter]):
+            msg_matrix.append(row)
+
+    blanks = 0
+    is_blank = False
     while True:
+        print(len(msg_matrix))
         write_board(matrix)
-        print(alphabet["a"])
+        if msg_matrix:
+            line = msg_matrix.pop(0)
+        else:
+            line = empty
+            blanks += 1
+            print(blanks)
+        
         matrix.pop()
-        matrix = [empty] + matrix
+        matrix = [line] + matrix
+        if blanks > 33:
+            del(strip)
+            quit()
 

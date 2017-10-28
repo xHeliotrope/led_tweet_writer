@@ -626,7 +626,7 @@ zero = [
 [0, 1, 1, 1, 0]
 ]
 
-letterSpace = [[0], [0], [0], [0], [0], [0], [0]]
+letter_space = [[0], [0], [0], [0], [0], [0], [0], [0]]
 
 #alphabet = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U V, W, X, Y, Z]
 alphabet = {}
