@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 import re
@@ -50,7 +51,6 @@ def write_message(matrix, empty, msg):
     for letter in msg:
         for row in rot_ninety(alphabet[letter]):
             msg_matrix.append(row)
-            print(row, letter_space)
 
     while True:
         write_board(matrix)
