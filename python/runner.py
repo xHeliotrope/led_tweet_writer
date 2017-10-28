@@ -5,5 +5,7 @@ def run_processes():
     proc2 = Popen("%s %s" % ('node', 'tweet_writer.js'), shell=True)
     (out, err) = proc1.communicate()
     (out2, err2) = proc2.communicate()
+    proc1.wait()
+    proc2.wait()
     
 run_processes()

@@ -24,7 +24,6 @@ LED_STRIP      = ws.WS2812_STRIP
 
 
 def write_board(matrix):
-    time.sleep(.050)
     for column, row in enumerate(matrix):
         #flip the column on odd rows to account for how the board is wired
         if column % 2 == 1:
@@ -45,7 +44,7 @@ def rot_ninety(matrx):
     return new_matrx
 
 
-def print_message(matrix, empty, msg):
+def write_message(matrix, empty, msg):
     blanks = 0
     msg_matrix = []
     for letter in msg:
@@ -82,7 +81,6 @@ if __name__ == '__main__':
     matrix = [empty for col in range(NUMCOLS)]
     while True:
         msg = get_message()
-        if blanks == 35:
-            break
+        write_message(matrix, empty, msg)
         
 
