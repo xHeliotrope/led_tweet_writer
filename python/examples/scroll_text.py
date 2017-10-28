@@ -51,7 +51,7 @@ def write_message(matrix, empty, msg):
         for row in rot_ninety(alphabet[letter]):
             msg_matrix.append(row)
             print(row, letter_space)
-            msg_matrix.append(letter_space)
+
     while True:
         write_board(matrix)
         if msg_matrix:
@@ -59,7 +59,7 @@ def write_message(matrix, empty, msg):
         else:
             line = empty
             blanks += 1
-        if blanks > NUMCOLS
+        if blanks > NUMCOLS:
             break
         matrix.pop()
         matrix = [line] + matrix
